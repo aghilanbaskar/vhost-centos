@@ -95,3 +95,13 @@ sudo yum -y install epel-release
 sudo yum -y install certbot python2-certbot-apache mod_ssl
 
 sudo certbot --apache --non-interactive --agree-tos --redirect -d $domain_name
+
+http_scheme=$(curl --write-out '%{scheme}' --silent -IL --output /dev/null http://$domain_name)
+
+if [[ $http_scheme == "HTTPS" ]];
+then
+  echo "HTTPS enabled on site $domain_name successfully"
+else
+  echo "HTTPS redirect not working. Something went wrong in setup"
+  exit 1
+fi
