@@ -23,7 +23,7 @@ Run the bash script
 ```
 It will asking for domain name. Enter your domain name. That's it.
 
-**Please make sure you have pointed out your A record in DNS to the VM your are going to run this script.**
+**Please make sure you have pointed out your A record in DNS to the VM you are going to run this script.**
 
 ## Contributing
 Pull requests are welcome.
