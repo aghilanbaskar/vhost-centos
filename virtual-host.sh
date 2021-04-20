@@ -1,8 +1,22 @@
 #!/bin/bash
+if [ "$(whoami)" != 'root' ]; then
+  echo "Run this script as a root user"
+  exit 1;
+fi
+
+DISTRO=$(cat /etc/*-release | grep -w NAME | cut -d= -f2 | tr -d '"')
+#CentOS Linux
+#Ubuntu
+
+if [ "$(DISTRO)" != 'CentOS Linux' ]; then
+  echo "Not a CentOS Distro"
+  exit 1;
+fi
+
 read -p "Enter the domain name : " domain_name
 if ! [[ "$domain_name" =~ (^([a-zA-Z0-9](([a-zA-Z0-9-]){0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,}$) ]]
 then
-        echo "$domain_name is a not a corect domain name"
+        echo "$domain_name is a not a correct domain name"
 	exit 1
 fi
 echo $domain_name
