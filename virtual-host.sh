@@ -8,7 +8,7 @@ DISTRO=$(cat /etc/*-release | grep -w NAME | cut -d= -f2 | tr -d '"')
 #CentOS Linux
 #Ubuntu
 
-if [ "$(DISTRO)" != 'CentOS Linux' ]; then
+if [ "$DISTRO" != 'CentOS Linux' ]; then
   echo "Not a CentOS Distro"
   exit 1;
 fi
